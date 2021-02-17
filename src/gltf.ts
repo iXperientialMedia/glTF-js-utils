@@ -605,6 +605,14 @@ function addMaterial(gltf: glTF, material: Material): number {
         const normalIndex = addTexture(gltf, material.normalTexture);
         gltfMaterial.normalTexture = { index: normalIndex };
     }
+    if (material.occlusionTexture) {
+        const occlusionIndex = addTexture(gltf, material.occlusionTexture);
+        gltfMaterial.occlusionTexture = { index: occlusionIndex };
+    }
+    if (material.emissiveTexture) {
+        const emissiveIndex = addTexture(gltf, material.emissiveTexture);
+        gltfMaterial.emissiveTexture = { index: emissiveIndex };
+    }
     if (material.pbrMetallicRoughness) {
         if (material.pbrMetallicRoughness.baseColorFactor) {
             gltfMaterial.pbrMetallicRoughness = {};
@@ -615,11 +623,11 @@ function addMaterial(gltf: glTF, material: Material): number {
             const diffuseIndex = addTexture(gltf, material.pbrMetallicRoughness.baseColorTexture);
             gltfMaterial.pbrMetallicRoughness.baseColorTexture = { index: diffuseIndex };
         }
-        if (material.pbrMetallicRoughness.metallicFactor) {
+        if (material.pbrMetallicRoughness.metallicFactor != null) {
             if (!gltfMaterial.pbrMetallicRoughness) gltfMaterial.pbrMetallicRoughness = {};
             gltfMaterial.pbrMetallicRoughness.metallicFactor = material.pbrMetallicRoughness.metallicFactor;
         }
-        if (material.pbrMetallicRoughness.roughnessFactor) {
+        if (material.pbrMetallicRoughness.roughnessFactor != null) {
             if (!gltfMaterial.pbrMetallicRoughness) gltfMaterial.pbrMetallicRoughness = {};
             gltfMaterial.pbrMetallicRoughness.roughnessFactor = material.pbrMetallicRoughness.roughnessFactor;
         }
