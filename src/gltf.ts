@@ -603,12 +603,13 @@ function addMaterial(gltf: glTF, material: Material): number {
         gltfMaterial.doubleSided = true;
     if (material.normalTexture) {
         const normalIndex = addTexture(gltf, material.normalTexture);
-        gltfMaterial.normalTexture = { index: normalIndex };
+        const normalScale = material.normalTexture.scale;
+        gltfMaterial.normalTexture = { index: normalIndex, scale: normalScale };
     }
-    if (material.occlusionTexture) {
-        const occlusionIndex = addTexture(gltf, material.occlusionTexture);
-        gltfMaterial.occlusionTexture = { index: occlusionIndex };
-    }
+    //if (material.occlusionTexture) {
+        //const occlusionIndex = addTexture(gltf, material.occlusionTexture);
+        //gltfMaterial.occlusionTexture = { index: occlusionIndex };
+    //}
     if (material.emissiveTexture) {
         const emissiveIndex = addTexture(gltf, material.emissiveTexture);
         gltfMaterial.emissiveTexture = { index: emissiveIndex };
