@@ -608,7 +608,8 @@ function addMaterial(gltf: glTF, material: Material): number {
     }
     //if (material.occlusionTexture) {
         //const occlusionIndex = addTexture(gltf, material.occlusionTexture);
-        //gltfMaterial.occlusionTexture = { index: occlusionIndex };
+        //const emissiveStrength = material.emissiveTexture.strength;
+        //gltfMaterial.occlusionTexture = { index: occlusionIndex, strength: emissiveStrength };
     //}
     if (material.emissiveTexture) {
         const emissiveIndex = addTexture(gltf, material.emissiveTexture);
@@ -631,6 +632,11 @@ function addMaterial(gltf: glTF, material: Material): number {
         if (material.pbrMetallicRoughness.roughnessFactor != null) {
             if (!gltfMaterial.pbrMetallicRoughness) gltfMaterial.pbrMetallicRoughness = {};
             gltfMaterial.pbrMetallicRoughness.roughnessFactor = material.pbrMetallicRoughness.roughnessFactor;
+        }
+        if (material.pbrMetallicRoughness.metallicRoughnessTexture != null) {
+            if (!gltfMaterial.pbrMetallicRoughness) gltfMaterial.pbrMetallicRoughness = {};
+            const metallicRoughnessIndex = addTexture(gltf, material.pbrMetallicRoughness.metallicRoughnessTexture);
+            gltfMaterial.pbrMetallicRoughness.metallicRoughnessTexture = { index: metallicRoughnessIndex };
         }
     }
 

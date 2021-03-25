@@ -22,5 +22,6 @@ export interface PBRMetallicRoughness {
   metallicFactor: number;
   roughnessFactor: number;
   baseColorFactor?: [number, number, number, number];
+  metallicRoughnessTexture?: Texture;
   baseColorTexture?: Texture;
 }
