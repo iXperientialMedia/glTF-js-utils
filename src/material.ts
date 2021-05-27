@@ -10,7 +10,7 @@ export class Material {
 
   public pbrMetallicRoughness: PBRMetallicRoughness = {
     metallicFactor: 1.0,
-    roughnessFactor: 1.0,
+    roughnessFactor: 0.0,
   };
 
   public normalTexture?: Texture;
