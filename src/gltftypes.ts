@@ -213,6 +213,7 @@ export interface glTFMaterial {
   doubleSided?: boolean;
   pbrMetallicRoughness?: glTFMetallicRoughness;
   normalTexture?: glTFMaterialTex;
+  occlusionTexture?: glTFMaterialTex;
   emissiveFactor?: [number, number, number];
   emissiveTexture?: glTFMaterialTex;
 }
@@ -229,4 +230,5 @@ export interface glTFMaterialTex {
   index: number;
   texCoord?: number;
   scale?: number;
+  strength?: number;
 }

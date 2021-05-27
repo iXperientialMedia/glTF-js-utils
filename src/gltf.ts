@@ -606,14 +606,17 @@ function addMaterial(gltf: glTF, material: Material): number {
         const normalScale = material.normalTexture.scale;
         gltfMaterial.normalTexture = { index: normalIndex, scale: normalScale };
     }
-    //if (material.occlusionTexture) {
-        //const occlusionIndex = addTexture(gltf, material.occlusionTexture);
-        //const emissiveStrength = material.emissiveTexture.strength;
-        //gltfMaterial.occlusionTexture = { index: occlusionIndex, strength: emissiveStrength };
-    //}
+    if (material.occlusionTexture) {
+        const occlusionIndex = addTexture(gltf, material.occlusionTexture);
+        const occlusionStrength = material.occlusionTexture.strength;
+        gltfMaterial.occlusionTexture = { index: occlusionIndex, strength: occlusionStrength };
+    }
     if (material.emissiveTexture) {
         const emissiveIndex = addTexture(gltf, material.emissiveTexture);
         gltfMaterial.emissiveTexture = { index: emissiveIndex };
+    }
+    if (material.emissiveFactor != null) {
+        gltfMaterial.emissiveFactor = material.emissiveFactor;
     }
     if (material.pbrMetallicRoughness) {
         if (material.pbrMetallicRoughness.baseColorFactor) {

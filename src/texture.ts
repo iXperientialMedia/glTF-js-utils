@@ -6,6 +6,7 @@ export class Texture {
   public wrapS: WrappingMode = WrappingMode.CLAMP_TO_EDGE;
   public wrapT: WrappingMode = WrappingMode.CLAMP_TO_EDGE;
   public scale: number = 1;
+  public strength: number = 1;
 
   private __image!: TextureImageType;
 
